@@ -1,0 +1,36 @@
+<h2>Welcome, {{request.session.f_name}}!</h2><br>
+	{%if messages%}
+		{%for message in messages%}
+			<p>{{message}}</p>
+		{%endfor%}
+	{%endif%}
+<p>
+  <a href="/logout">Logout here.</a><br>
+</p>
+
+
+
+<table border="1">
+<tr>
+	<th>Name</th>
+	<th>Description</th>
+	<th>Action</th>
+</tr>
+	{%for wish in wishs%}
+		<tr>
+			<td>{{wish.name}}</td>
+			<td>{{wish.description}}</td>
+			{%if wish.owner.id == request.session.user_id%}
+				<td><p><a href="?">edit</a> | <a href="?">delete</a> </p></td>
+			{%endif%}
+		</tr>
+
+	{%endfor%}
+
+</table>
+
+
+
+<p>
+  <a href="/wish/addform">Click here to add an item.</a>
+</p>

@@ -1,0 +1,13 @@
+{%if messages%}
+  {%for message in messages%}
+    <p>{{message}}</p>
+  {%endfor%}
+{%endif%}
+<form action='/wish/addwish' method="post">
+{%csrf_token%}
+<input type="text" name="name" placeholder="Enter your item here!"><br>
+<input type="text" name="description" placeholder="Describe your item!"><br>
+<input type="hidden" name ='user_id' value="{{request.session.user_id}}"><br>
+<input type='submit' value='Add an item to your list'>
+
+</form>
